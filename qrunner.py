@@ -13,7 +13,6 @@ class App(QApplication):
         super().__init__(argv)
 
         self.query = QLineEdit()
-
         self.query.resize(600, 40)
 
         geometry = self.query.frameGeometry()
@@ -37,8 +36,7 @@ class App(QApplication):
         if not os.path.isfile(script):
             return
 
-        cmd = ['osascript', script]
-        cmd.extend(args[1:])
+        cmd = ['osascript', script, ' '.join(args[1:])]
 
         subprocess.call(cmd)
         QCoreApplication.instance().quit()
