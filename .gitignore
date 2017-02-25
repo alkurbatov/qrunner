@@ -1,13 +1,9 @@
-# Mac stuff
+# MacOs stuff
 .DS_Store
 
-# Python stuff
-*.py[cod]
-
-# Editors stuff
-*.swp
-
 # Build routine
-build
+Makefile
 dist
+qrunner.app
+.qmake.stash
 
