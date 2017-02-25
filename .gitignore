@@ -3,6 +3,8 @@
 
 # Build routine
 Makefile
+Makefile.Debug
+Makefile.Release
 dist
 qrunner.app
 .qmake.stash
