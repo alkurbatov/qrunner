@@ -22,3 +22,8 @@ SOURCES += src/main.cpp \
 
 QMAKE_CLEAN += $(TARGET)
 
+dmg.target = dmg
+dmg.commands = macdeployqt dist/release/qrunner.app -dmg -always-overwrite
+dmg.depends = release
+
+QMAKE_EXTRA_TARGETS += dmg
