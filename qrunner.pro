@@ -20,3 +20,5 @@ HEADERS += src/query.h
 SOURCES += src/main.cpp \
            src/query.cpp
 
+QMAKE_CLEAN += $(TARGET)
+
