@@ -38,17 +38,18 @@ Query::Query()
 
 void Query::run()
 {
-    if (this->text().isEmpty())
+    QString input = this->text().trimmed();
+    if (input.isEmpty())
         return;
 
-    QStringList args = this->text().split(" ");
     QFileInfo f(QDir::homePath() + "/.qrunner/scripts",
-                args[0] + ".applescript");
+                input.section(" ", 0, 0) + ".applescript");
 
     if (!f.isFile())
         return;
 
-    args[0] = f.filePath();
+    QStringList args(f.filePath());
+    args.append(this->text().section(" ", 1));
 
     QProcess p(this);
     p.start("osascript", args);
