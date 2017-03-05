@@ -7,5 +7,6 @@ Makefile.Debug
 Makefile.Release
 dist
 qrunner.app
+qrunner.dmg
 .qmake.stash
 

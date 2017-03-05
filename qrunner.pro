@@ -23,7 +23,15 @@ SOURCES += src/main.cpp \
 QMAKE_CLEAN += $(TARGET)
 
 dmg.target = dmg
-dmg.commands = macdeployqt dist/release/qrunner.app -dmg -always-overwrite
+dmg.commands = cd dist/release && \ 
+               macdeployqt qrunner.app -dmg -always-overwrite && \
+               cd - && \
+               rm -fv qrunner.dmg && \
+               hdiutil convert -format UDRW -o qrunner dist/release/qrunner.dmg && \
+               open -W qrunner.dmg && \
+               ln -s /Applications /Volumes/qrunner/Applications && \
+               cd - && \
+               umount /Volumes/qrunner
 dmg.depends = release
 
 QMAKE_EXTRA_TARGETS += dmg
