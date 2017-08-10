@@ -14,8 +14,11 @@ $ qmake
 # Debug build.
 $ make debug
 
-# Release build with a .dmg image.
+# Release build.
 $ make release
+
+# Make a .dmg image (release build).
+$ make dmg
 ```
 
 ## License
