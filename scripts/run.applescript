@@ -1,7 +1,7 @@
 (*
  This file is a part of QRunner project
 
- Copyright (C) 2017, Alexander Kurbatov <sir.alkurbatov@yandex.ru>
+ Copyright (C) 2019, Alexander Kurbatov <sir.alkurbatov@yandex.ru>
 
  QRunner is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -17,18 +17,13 @@
  along with this program. If not, see <http://www.gnu.org/licenses/>.
 *)
 
--- For additional details please visit
--- https://www.iterm2.com/documentation-scripting.html
-
 on run argv
-	tell application "iTerm"
+	tell application "Terminal"
 		activate
-		select first window
-
-		tell current window
-			tell current session
-				write text argv
-			end tell
-		end tell
+		tell application "System Events" to keystroke "t" using command down
+		repeat while contents of selected tab of window 1 starts with linefeed
+			delay 0.01
+			end repeat
+		do script argv in window 1
 	end tell
 end run
